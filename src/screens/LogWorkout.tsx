@@ -276,6 +276,7 @@ export default function LogWorkout() {
                     value={s.weight}
                     placeholder="kg"
                     disabled={s.done}
+                    onFocus={(e) => e.target.select()}
                     onChange={(e) => setField(exIdx, setIdx, "weight", e.target.value)}
                   />
                   <span className="unit">kg</span>
@@ -285,6 +286,7 @@ export default function LogWorkout() {
                     value={s.reps}
                     placeholder="reps"
                     disabled={s.done}
+                    onFocus={(e) => e.target.select()}
                     onChange={(e) => setField(exIdx, setIdx, "reps", e.target.value)}
                   />
                   <span className="unit">reps</span>
