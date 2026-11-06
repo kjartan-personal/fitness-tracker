@@ -306,9 +306,14 @@ input {
 }
 
 .set-row {
-  display: flex;
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) minmax(0, 1fr) 44px 36px;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
+}
+
+.set-row.with-rir {
+  grid-template-columns: 20px minmax(0, 1fr) minmax(0, 1fr) 52px 44px 36px;
 }
 
 .set-row.done {
@@ -316,16 +321,23 @@ input {
 }
 
 .set-idx {
-  width: 20px;
   text-align: center;
   font-size: 13px;
   font-weight: 700;
   color: var(--text-dim);
 }
 
+.set-field {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+}
+
 .set-input {
-  width: 62px;
-  padding: 10px 8px;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 4px;
   text-align: center;
   border-radius: 10px;
   border: 1px solid var(--border);
@@ -342,33 +354,30 @@ input {
 .set-row .unit {
   font-size: 12px;
   color: var(--text-dim);
-  margin-right: 2px;
+  flex: none;
 }
 
 .set-btn {
+  width: 100%;
   border: 1px solid var(--border);
   background: var(--surface-2);
   border-radius: 10px;
-  padding: 9px 12px;
+  padding: 9px 4px;
   font-weight: 700;
 }
 
 .set-btn.log {
-  margin-left: auto;
   background: var(--accent);
   border-color: var(--accent);
   color: white;
-  min-width: 44px;
 }
 
 .set-btn.edit {
-  margin-left: auto;
   color: var(--text-dim);
 }
 
 .set-btn.remove {
   color: var(--text-dim);
-  padding: 9px 11px;
 }
 
 .add-set {
@@ -383,7 +392,9 @@ input {
 }
 
 .rir-select {
-  width: 58px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   flex: none;
   padding: 9px 4px;
   text-align: center;
@@ -447,6 +458,12 @@ input {
   padding: 10px 14px;
 }
 
+.rest-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
 .rest-time {
   font-size: 22px;
   font-weight: 800;
@@ -454,13 +471,18 @@ input {
 }
 
 .rest-name {
-  font-size: 11px;
+  display: block;
+  overflow: hidden;
   color: var(--text-dim);
+  font-size: 11px;
   margin-top: 2px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rest-controls {
   display: flex;
+  flex: none;
   gap: 6px;
 }
 
@@ -471,12 +493,47 @@ input {
   padding: 8px 10px;
   font-weight: 700;
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .rest-controls .skip {
   background: var(--accent);
   border-color: var(--accent);
   color: white;
+}
+
+.rest-timer {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 360px) {
+  .log-screen .card {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .set-row {
+    gap: 3px;
+    grid-template-columns: 18px minmax(0, 1fr) minmax(0, 1fr) 40px 32px;
+  }
+
+  .set-row.with-rir {
+    grid-template-columns: 18px minmax(0, 1fr) minmax(0, 1fr) 48px 40px 32px;
+  }
+
+  .set-field {
+    gap: 2px;
+  }
+
+  .set-field .unit {
+    font-size: 11px;
+  }
+
+  .set-input {
+    padding-left: 2px;
+    padding-right: 2px;
+  }
 }
 
 /* --- Progress ------------------------------------------------------------- */

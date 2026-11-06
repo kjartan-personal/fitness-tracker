@@ -40,7 +40,7 @@ export function recentSessions(
 ): WorkSession[] {
   const out: WorkSession[] = [];
   for (const log of history) {
-    if (!log.completedAt) continue;
+    if (!log.completedAt || isDeloadWeek(log.week)) continue;
     const entry = log.entries.find((e) => e.exerciseId === exerciseId && e.sets.length > 0);
     if (!entry) continue;
     out.push({

@@ -45,6 +45,8 @@ strength training, supported by adequate protein intake.
   **auto-suggests a weight increase** next session and resets reps to the bottom
   of the range.
 - Between those points, the user is pushed to **add reps** session over session.
+- Deload-week workouts are kept in history but excluded from progression
+  recommendations and plateau detection.
 - Increments are exercise-aware (smaller jumps for isolation, larger for compounds).
 - **All suggestions are overridable** — the user logs what they actually did.
 
@@ -163,7 +165,8 @@ This delivers novelty without losing progression on the core lifts.
 
 ## 5. Screens (v1)
 
-1. **Today** — prescribed workout + logging, OR rest-day view with protein tally.
+1. **Today** — prescribed workout + logging, OR rest-day view with protein tally
+   and an option to start the next scheduled workout early.
 2. **Log Workout** — active session screen (sets, reps, weight, rest timer).
 3. **Nutrition** — protein tally, diet check, targets.
 4. **Progress** — exercise trends, bodyweight, protein adherence, mesocycle status.

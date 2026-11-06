@@ -60,7 +60,10 @@ export default function Today() {
       )}
 
       {completedToday ? (
-        <RestDayCard dayType={completedToday.dayType} />
+        <RestDayCard
+          dayType={completedToday.dayType}
+          onStart={() => navigate("/log")}
+        />
       ) : (
         <WorkoutCard
           startingWeights={settings.startingWeights}
@@ -219,7 +222,13 @@ function StartWeightInput({ exerciseId }: { exerciseId: string }) {
   );
 }
 
-function RestDayCard({ dayType }: { dayType: "upper" | "lower" }) {
+function RestDayCard({
+  dayType,
+  onStart,
+}: {
+  dayType: "upper" | "lower";
+  onStart: () => void;
+}) {
   return (
     <div className="card center" style={{ padding: "26px 16px" }}>
       <div style={{ fontSize: 40 }}>✅</div>
@@ -227,8 +236,11 @@ function RestDayCard({ dayType }: { dayType: "upper" | "lower" }) {
         {dayType === "upper" ? "Upper" : "Lower"} day done
       </div>
       <div className="muted" style={{ fontSize: 14, marginTop: 4 }}>
-        Rest and recover. Keep protein up — next session is on your other-day cadence.
+        Rest and recover, or start the next scheduled workout when you’re ready.
       </div>
+      <button className="btn secondary" style={{ marginTop: 16 }} onClick={onStart}>
+        Start next workout →
+      </button>
     </div>
   );
 }

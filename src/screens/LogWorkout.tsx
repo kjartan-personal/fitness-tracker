@@ -268,28 +268,37 @@ export default function LogWorkout() {
 
             <div className="sets">
               {ex.sets.map((s, setIdx) => (
-                <div className={`set-row ${s.done ? "done" : ""}`} key={setIdx}>
+                <div
+                  className={`set-row ${rirEnabled ? "with-rir" : ""} ${s.done ? "done" : ""}`}
+                  key={setIdx}
+                >
                   <span className="set-idx">{setIdx + 1}</span>
-                  <input
-                    className="set-input"
-                    inputMode="decimal"
-                    value={s.weight}
-                    placeholder="kg"
-                    disabled={s.done}
-                    onFocus={(e) => e.target.select()}
-                    onChange={(e) => setField(exIdx, setIdx, "weight", e.target.value)}
-                  />
-                  <span className="unit">kg</span>
-                  <input
-                    className="set-input"
-                    inputMode="numeric"
-                    value={s.reps}
-                    placeholder="reps"
-                    disabled={s.done}
-                    onFocus={(e) => e.target.select()}
-                    onChange={(e) => setField(exIdx, setIdx, "reps", e.target.value)}
-                  />
-                  <span className="unit">reps</span>
+                  <label className="set-field">
+                    <input
+                      className="set-input"
+                      inputMode="decimal"
+                      value={s.weight}
+                      placeholder="kg"
+                      aria-label={`Set ${setIdx + 1} weight in kilograms`}
+                      disabled={s.done}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => setField(exIdx, setIdx, "weight", e.target.value)}
+                    />
+                    <span className="unit">kg</span>
+                  </label>
+                  <label className="set-field">
+                    <input
+                      className="set-input"
+                      inputMode="numeric"
+                      value={s.reps}
+                      placeholder="reps"
+                      aria-label={`Set ${setIdx + 1} reps`}
+                      disabled={s.done}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => setField(exIdx, setIdx, "reps", e.target.value)}
+                    />
+                    <span className="unit">reps</span>
+                  </label>
                   {rirEnabled && (
                     <select
                       className="rir-select"
